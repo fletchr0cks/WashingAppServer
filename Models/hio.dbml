@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="dbb7ab6d80ef0b40bc925da0210152b17d" Class="hioDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=b7ab6d80-ef0b-40bc-925d-a0210152b17d.sqlserver.sequelizer.com;Initial Catalog=dbb7ab6d80ef0b40bc925da0210152b17d;Persist Security Info=True;User ID=wnohangthtsmleuv" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbb7ab6d80ef0b40bc925da0210152b17dConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Lat" Type="System.Decimal" DbType="Decimal(18,8)" CanBeNull="true" />
+      <Column Name="Long" Type="System.Decimal" DbType="Decimal(18,8)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
