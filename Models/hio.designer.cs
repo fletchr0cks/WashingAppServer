@@ -92,6 +92,10 @@ namespace HIO.Models
 		
 		private string _City;
 		
+		private System.Nullable<System.DateTime> _Timestamp;
+		
+		private string _Comment;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -108,6 +112,10 @@ namespace HIO.Models
     partial void OnCountryChanged();
     partial void OnCityChanging(string value);
     partial void OnCityChanged();
+    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimestampChanged();
+    partial void OnCommentChanging(string value);
+    partial void OnCommentChanged();
     #endregion
 		
 		public User()
@@ -231,6 +239,46 @@ namespace HIO.Models
 					this._City = value;
 					this.SendPropertyChanged("City");
 					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Timestamp", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Timestamp
+		{
+			get
+			{
+				return this._Timestamp;
+			}
+			set
+			{
+				if ((this._Timestamp != value))
+				{
+					this.OnTimestampChanging(value);
+					this.SendPropertyChanging();
+					this._Timestamp = value;
+					this.SendPropertyChanged("Timestamp");
+					this.OnTimestampChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Comment", DbType="VarChar(50)")]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this.OnCommentChanging(value);
+					this.SendPropertyChanging();
+					this._Comment = value;
+					this.SendPropertyChanged("Comment");
+					this.OnCommentChanged();
 				}
 			}
 		}

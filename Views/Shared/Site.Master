@@ -5,6 +5,9 @@
 <head runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jquery.ui.map.js"></script>
 </head>
 
 <body>

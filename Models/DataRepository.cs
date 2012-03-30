@@ -14,14 +14,17 @@ namespace HIO.Models
 
         private hioDataContext db = new hioDataContext();
 
-        public void savenew(string lat, string lval)
+        public void savenew(string lat, string lval, string city, string country, string comment)
         {
 
             User user = new User();
             user.Lat = Convert.ToDecimal(lat);
             user.Long = Convert.ToDecimal(lval);
-            user.PID = "222fefr";
-            //mark.Timestamp = DateTime.Now;
+            user.PID = "222fe9";
+            user.City = city;
+            user.Country = country;
+            user.Comment = comment;
+            user.Timestamp = DateTime.Now;
             db.Users.InsertOnSubmit(user);
 
             db.SubmitChanges();

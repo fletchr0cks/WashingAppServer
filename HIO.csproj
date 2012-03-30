@@ -78,6 +78,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.ui.map.js" />
     <Content Include="Views\Home\Save.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />

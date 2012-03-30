@@ -36,13 +36,13 @@ namespace HIO.Controllers
             return View();
         }
 
-        public ActionResult Save(string lat, string lval)
+        public ActionResult Save(string lat, string lval, string city, string country, string comment)
         {
             var dataContext = new hioDataContext();
 
             ViewData["Message"] = lat + "  " + lval;
 
-            dataRepository.savenew(lat, lval);
+            dataRepository.savenew(lat, lval, city, country, comment);
 
             return View();
 
@@ -57,12 +57,15 @@ namespace HIO.Controllers
                        orderby ev.UserID descending
                        select new
                        {
-                           lat = ev.Lat,
-                           lval = ev.Long,
+                           latitude = ev.Lat,
+                           longitude = ev.Long,
+                           title = ev.Comment,
+                           content = ev.City,
+                           timestamp = Convert.ToString(ev.Timestamp)
 
                        };
             //new { gloss_list = GlossaryList, answer = desc }
-            return Json(new { user_list = data.Distinct() });
+            return Json(new { markers = data.Distinct() });
         }
 
     }
