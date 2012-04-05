@@ -26,10 +26,8 @@
 });
 </script>
 
-
-    <h2><%= Html.Encode(ViewData["Message"]) %></h2>
     <p>
-        Click refresh in the top right for our latest position. 
+        Click Refresh in the top right for our latest logged position. 
     </p>
     <p>
         Click on the map makers for more information .... see you soon xxxxx Nick, Miriam, Ursula and Jacob. 
