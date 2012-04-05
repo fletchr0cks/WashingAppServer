@@ -30,7 +30,7 @@
         Click Refresh in the top right for our latest logged position. 
     </p>
     <p>
-        Click on the map makers for more information .... see you soon xxxxx Nick, Miriam, Ursula and Jacob. 
+        Click on the map markers for more information .... see you soon xxxxx Nick, Miriam, Ursula and Jacob. 
     </p>
     
     <div id="map_canvas" class="map rounded"></div>
