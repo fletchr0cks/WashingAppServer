@@ -19,13 +19,13 @@
             </div>
               
             <div id="logindisplay">
-               
+               <p>&nbsp; </p>
             </div> 
             
             <div id="menucontainer">
             
                 <ul id="menu">              
-                    <li><%= Html.ActionLink("Home", "Index", "Refresh")%></li>
+                    <li><%= Html.ActionLink("Refresh", "Index", "Home")%></li>
                     
                 </ul>
             
