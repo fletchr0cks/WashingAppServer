@@ -29,9 +29,13 @@
 
     <h2><%= Html.Encode(ViewData["Message"]) %></h2>
     <p>
-        To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+        Click refresh in the top right for our latest position. 
+    </p>
+    <p>
+        Click on the map makers for more information .... see you soon xxxxx Nick, Miriam, Ursula and Jacob. 
     </p>
     
-    <div id="map_canvas" class="map rounded"></div>
+    <div id="map_canvas" class="map rounded"></div>
+
     
 </asp:Content>
