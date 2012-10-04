@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -66,6 +66,51 @@ namespace HIO.Controllers
                        };
             //new { gloss_list = GlossaryList, answer = desc }
             return Json(new { markers = data.Distinct() }, JsonRequestBehavior.AllowGet);
+        }
+        
+        public JsonResult GetAllUsersPlain()
+        {
+            var dataContext = new hioDataContext();
+
+            var data = from ev in dataContext.Users
+                       orderby ev.UserID descending
+                       select new
+                       {
+                           latitude = ev.Lat,
+                           longitude = ev.Long,
+                           title = ev.Comment,
+                           content = ev.City,
+                           timestamp = Convert.ToString(ev.Timestamp)
+
+                       };
+            //new { gloss_list = GlossaryList, answer = desc }
+            return Json(new { markers = data.Distinct() });
+        }
+        
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult GetAllUsersPost()
+        {
+            var dataContext = new hioDataContext();
+
+            var data = from ev in dataContext.Users
+                       orderby ev.UserID descending
+                       select new
+                       {
+                           latitude = ev.Lat,
+                           longitude = ev.Long,
+                           title = ev.Comment,
+                           content = ev.City,
+                           timestamp = Convert.ToString(ev.Timestamp)
+
+                       };
+            //new { gloss_list = GlossaryList, answer = desc }
+            return Json(new { markers = data.Distinct() });
+        }
+        
+        public JsonResult jsonplain()
+        {
+            var jsonstr = {"menu": {"id": "file", "value": "File", "popup": {"menuitem": [{"value": "New", "onclick": "CreateNewDoc()"},{"value": "Open", "onclick": "OpenDoc()"},{"value": "Close", "onclick": "CloseDoc()"} ]}}};
+            return Json(jsonstr);
         }
 
     }
