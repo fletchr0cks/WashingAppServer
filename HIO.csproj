@@ -73,6 +73,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>hio.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\jsonp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

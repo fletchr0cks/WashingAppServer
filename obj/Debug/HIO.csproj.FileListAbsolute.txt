@@ -3,3 +3,8 @@ C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Visual Studio 2008\
 C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Visual Studio 2008\Projects\HIO\HIO\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Visual Studio 2008\Projects\HIO\HIO\obj\Debug\HIO.dll
 C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Visual Studio 2008\Projects\HIO\HIO\obj\Debug\HIO.pdb
+C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\obj\Debug\HIO.dll
+C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\bin\HIO.dll
+C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\bin\HIO.pdb
+C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\obj\Debug\HIO.pdb

@@ -10,7 +10,7 @@
    $('#map_canvas').gmap().bind('init', function(event, map) { 
         // This URL won't work on your localhost, so you need to change it
         // see http://en.wikipedia.org/wiki/Same_origin_policy
-        $.getJSON('http://washingapp.apphb.com/home/GetAllUsers', function(data) {
+        $.getJSON('/home/GetAllUsers', function(data) {
             $.each(data.markers, function(i, marker) {
                 $('#map_canvas').gmap('addMarker', {
                     'position': new google.maps.LatLng(marker.latitude, marker.longitude),

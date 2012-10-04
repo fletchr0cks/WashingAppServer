@@ -65,7 +65,7 @@ namespace HIO.Controllers
 
                        };
             //new { gloss_list = GlossaryList, answer = desc }
-            return Json(new { markers = data.Distinct() }, JsonRequestBehavior.AllowGet);
+            return Json(new { markers = data.Distinct() });
         }
         
         public JsonResult GetAllUsersPlain()
@@ -106,12 +106,29 @@ namespace HIO.Controllers
             //new { gloss_list = GlossaryList, answer = desc }
             return Json(new { markers = data.Distinct() });
         }
-        
-        public JsonResult jsonplain()
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetAllUsersNew()
         {
-            var jsonstr = {"menu": {"id": "file", "value": "File", "popup": {"menuitem": [{"value": "New", "onclick": "CreateNewDoc()"},{"value": "Open", "onclick": "OpenDoc()"},{"value": "Close", "onclick": "CloseDoc()"} ]}}};
-            return Json(jsonstr);
+            var dataContext = new hioDataContext();
+
+            var data = from ev in dataContext.Users
+                       orderby ev.UserID descending
+                       select new
+                       {
+                           latitude = ev.Lat,
+                           longitude = ev.Long,
+                           title = ev.Comment,
+                           content = ev.City,
+                           timestamp = Convert.ToString(ev.Timestamp)
+
+                       };
+
+         
+            //new { gloss_list = GlossaryList, answer = desc }
+            return new JsonpResult(data.Distinct());
         }
 
+ 
     }
 }
