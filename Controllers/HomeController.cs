@@ -65,7 +65,7 @@ namespace HIO.Controllers
 
                        };
             //new { gloss_list = GlossaryList, answer = desc }
-            return Json(new { markers = data.Distinct() });
+            return Json(new { markers = data.Distinct() }, JsonRequestBehavior.AllowGet);
         }
 
     }
