@@ -8,3 +8,8 @@ C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\obj\
 C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\bin\HIO.dll
 C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\bin\HIO.pdb
 C:\Documents and Settings\nick.fletcher\My Documents\MyLocal\Pigeon\HIO\HIO\obj\Debug\HIO.pdb
+G:\Nick\GitHub\WashingAppServer\bin\HIO.dll
+G:\Nick\GitHub\WashingAppServer\bin\HIO.pdb
+G:\Nick\GitHub\WashingAppServer\obj\Debug\ResolveAssemblyReference.cache
+G:\Nick\GitHub\WashingAppServer\obj\Debug\HIO.dll
+G:\Nick\GitHub\WashingAppServer\obj\Debug\HIO.pdb

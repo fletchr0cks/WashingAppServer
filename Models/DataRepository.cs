@@ -30,5 +30,101 @@ namespace HIO.Models
             db.SubmitChanges();
 
         }
+        
+        public void updateUser(int userID)
+        {
+
+            var user = db.Users
+                .Where(u => u.UserID == userID)
+                .First();
+
+            user.Timestamp = DateTime.Now;
+            db.SubmitChanges();
+
+        }
+
+        public void MovePlace(string latval, string longval, int PID)
+        {
+            var place = db.places
+                .Where(p => p.PID == PID)
+                .First();
+
+            place.LatVal = Convert.ToDecimal(latval);
+            place.LongVal = Convert.ToDecimal(longval);
+            db.SubmitChanges();
+
+        }
+
+        public string SiteCount(int userID)
+        {
+
+            int sitecount = db.places
+                .Where(u => u.UserID == userID)
+                .Count();
+
+            return Convert.ToString(sitecount);
+        }
+
+        public void AddLogin(int userID, string type)
+        {
+            hio_event newevent = new hio_event();
+            newevent.UserID = userID;
+            newevent.Event = type;
+            newevent.Datetime = DateTime.Now;
+            db.hio_events.InsertOnSubmit(newevent);
+            db.SubmitChanges();
+        }
+
+        public void APIcall(int userID)
+        {
+            hio_event newevent = new hio_event();
+            newevent.UserID = userID;
+            newevent.Event = "API";
+            newevent.Datetime = DateTime.Now;
+            db.hio_events.InsertOnSubmit(newevent);
+            db.SubmitChanges();
+        }
+
+        public void UserLoc(int userID, string latval, string longval)
+        {
+            user_location newloc = new user_location();
+            newloc.UserID = userID;
+            newloc.LatVal = Convert.ToDecimal(latval);
+            newloc.LongVal = Convert.ToDecimal(longval);
+            db.user_locations.InsertOnSubmit(newloc);
+            db.SubmitChanges();
+        }
+
+
+
+        public int AddUser(User user)
+        {
+            db.Users.InsertOnSubmit(user);
+            db.SubmitChanges();
+            return user.UserID;
+        }
+
+        public void AddComment(comment comment)
+        {
+            db.comments.InsertOnSubmit(comment);
+            db.SubmitChanges();
+        }
+
+        public int AddPlace(place place)
+        {
+            db.places.InsertOnSubmit(place);
+            db.SubmitChanges();
+            return place.PID;
+        }
+
+        public void Add(hio_event ev)
+        {
+            db.hio_events.InsertOnSubmit(ev);
+        }
+
+        public void Add(user_location loc)
+        {
+            db.user_locations.InsertOnSubmit(loc);
+        }
     }
 }
