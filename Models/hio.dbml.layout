@@ -14,7 +14,7 @@
         <elementListCompartment Id="da6f1cd6-2a75-4bb7-be31-73e15bc96fe8" absoluteBounds="3.015, 3.585, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.25 : 2.58223714192708); (2.25 : 2.825); (2.66666666666667 : 2.825 : JumpStart); (2.83333333333333 : 2.825 : JumpEnd); (4 : 2.825); (4 : 3.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.25 : 2.58223714192708); (2.25 : 2.825); (3.54166666666667 : 2.825 : JumpStart); (3.70833333333333 : 2.825 : JumpEnd); (4 : 2.825); (4 : 3.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/hioDataContext/User/User_comment" />
       <nodes>
         <classShapeMoniker Id="e06c0c6a-f95c-4eb9-94c6-9db38b3fd77c" />
@@ -40,30 +40,36 @@
         <elementListCompartment Id="3fe692d5-cb16-423f-8e65-9cfb7a640f3d" absoluteBounds="3.89, 0.96, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6baf1b5b-9d1d-47d2-84dc-d7372f9187cf" absoluteBounds="0.5, 4.875, 2, 1.75354248046875">
-      <DataClassMoniker Name="/hioDataContext/place" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e9d02d68-226a-4eb8-ac27-80514da547fb" absoluteBounds="0.51500000000000012, 5.335, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.5 : 4.875); (2.67066847381389 : 4.82011136324837 : JumpStart); (2.82933152618611 : 4.76908378649122 : JumpEnd); (3 : 4.71419514973958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/hioDataContext/place/place_comment" />
-      <nodes>
-        <classShapeMoniker Id="6baf1b5b-9d1d-47d2-84dc-d7372f9187cf" />
-        <classShapeMoniker Id="3a2e7e17-5418-4a67-a796-2b1aa3b3a67d" />
-      </nodes>
-    </associationConnector>
     <classShape Id="dbc6be24-514e-4a42-83e5-cc1a0d930e97" absoluteBounds="3.625, 5.125, 2, 1.75354248046875">
       <DataClassMoniker Name="/hioDataContext/user_location" />
       <nestedChildShapes>
         <elementListCompartment Id="0cc4db07-894b-4362-9ec9-2ba178e4c491" absoluteBounds="3.64, 5.585, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 2.58223714192708); (2.75 : 6.78479248046875); (3.625 : 6.78479248046875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.25 : 1.54111857096354); (3.625 : 1.54111857096354); (3.625 : 3); (3.91666666666667 : 3 : JumpStart); (4.08333333333333 : 3 : JumpEnd); (5.25 : 3); (5.25 : 4.75); (4.625 : 4.75); (4.625 : 5.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/hioDataContext/User/User_user_location" />
       <nodes>
         <classShapeMoniker Id="e06c0c6a-f95c-4eb9-94c6-9db38b3fd77c" />
         <classShapeMoniker Id="dbc6be24-514e-4a42-83e5-cc1a0d930e97" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="57ff8dbc-48db-446f-9350-0ea784db6ccc" absoluteBounds="5.5, 2.625, 2, 1.75354248046875">
+      <DataClassMoniker Name="/hioDataContext/Setting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="808926cb-faa5-48b3-8ba8-8eb36a37bb11" absoluteBounds="5.515, 3.085, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd490b19-a9fe-4d93-970a-e0de6c7979c7" absoluteBounds="0.625, 5, 2, 1.9178898111979166">
+      <DataClassMoniker Name="/hioDataContext/place" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8266f9b-6b23-4306-8f8e-658d44e08ed3" absoluteBounds="0.64000000000000012, 5.46, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 5); (3 : 4.71419514973958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/hioDataContext/place/place_comment" />
+      <nodes>
+        <classShapeMoniker Id="cd490b19-a9fe-4d93-970a-e0de6c7979c7" />
+        <classShapeMoniker Id="3a2e7e17-5418-4a67-a796-2b1aa3b3a67d" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

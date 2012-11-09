@@ -42,12 +42,15 @@ namespace HIO.Models
     partial void Insertnotice(notice instance);
     partial void Updatenotice(notice instance);
     partial void Deletenotice(notice instance);
-    partial void Insertplace(place instance);
-    partial void Updateplace(place instance);
-    partial void Deleteplace(place instance);
     partial void Insertuser_location(user_location instance);
     partial void Updateuser_location(user_location instance);
     partial void Deleteuser_location(user_location instance);
+    partial void InsertSetting(Setting instance);
+    partial void UpdateSetting(Setting instance);
+    partial void DeleteSetting(Setting instance);
+    partial void Insertplace(place instance);
+    partial void Updateplace(place instance);
+    partial void Deleteplace(place instance);
     #endregion
 		
 		public hioDataContext() : 
@@ -112,19 +115,27 @@ namespace HIO.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<place> places
-		{
-			get
-			{
-				return this.GetTable<place>();
-			}
-		}
-		
 		public System.Data.Linq.Table<user_location> user_locations
 		{
 			get
 			{
 				return this.GetTable<user_location>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Setting> Settings
+		{
+			get
+			{
+				return this.GetTable<Setting>();
+			}
+		}
+		
+		public System.Data.Linq.Table<place> places
+		{
+			get
+			{
+				return this.GetTable<place>();
 			}
 		}
 	}
@@ -992,216 +1003,6 @@ namespace HIO.Models
 		}
 	}
 	
-	[Table(Name="dbo.places")]
-	public partial class place : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _PID;
-		
-		private decimal _LatVal;
-		
-		private decimal _LongVal;
-		
-		private string _Name;
-		
-		private int _Flag;
-		
-		private int _UserID;
-		
-		private EntitySet<comment> _comments;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPIDChanging(int value);
-    partial void OnPIDChanged();
-    partial void OnLatValChanging(decimal value);
-    partial void OnLatValChanged();
-    partial void OnLongValChanging(decimal value);
-    partial void OnLongValChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnFlagChanging(int value);
-    partial void OnFlagChanged();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
-    #endregion
-		
-		public place()
-		{
-			this._comments = new EntitySet<comment>(new Action<comment>(this.attach_comments), new Action<comment>(this.detach_comments));
-			OnCreated();
-		}
-		
-		[Column(Storage="_PID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int PID
-		{
-			get
-			{
-				return this._PID;
-			}
-			set
-			{
-				if ((this._PID != value))
-				{
-					this.OnPIDChanging(value);
-					this.SendPropertyChanging();
-					this._PID = value;
-					this.SendPropertyChanged("PID");
-					this.OnPIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_LatVal", DbType="Decimal(18,8) NOT NULL")]
-		public decimal LatVal
-		{
-			get
-			{
-				return this._LatVal;
-			}
-			set
-			{
-				if ((this._LatVal != value))
-				{
-					this.OnLatValChanging(value);
-					this.SendPropertyChanging();
-					this._LatVal = value;
-					this.SendPropertyChanged("LatVal");
-					this.OnLatValChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_LongVal", DbType="Decimal(18,8) NOT NULL")]
-		public decimal LongVal
-		{
-			get
-			{
-				return this._LongVal;
-			}
-			set
-			{
-				if ((this._LongVal != value))
-				{
-					this.OnLongValChanging(value);
-					this.SendPropertyChanging();
-					this._LongVal = value;
-					this.SendPropertyChanged("LongVal");
-					this.OnLongValChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Name", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Flag", DbType="Int NOT NULL")]
-		public int Flag
-		{
-			get
-			{
-				return this._Flag;
-			}
-			set
-			{
-				if ((this._Flag != value))
-				{
-					this.OnFlagChanging(value);
-					this.SendPropertyChanging();
-					this._Flag = value;
-					this.SendPropertyChanged("Flag");
-					this.OnFlagChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[Association(Name="place_comment", Storage="_comments", ThisKey="PID", OtherKey="PlaceID")]
-		public EntitySet<comment> comments
-		{
-			get
-			{
-				return this._comments;
-			}
-			set
-			{
-				this._comments.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_comments(comment entity)
-		{
-			this.SendPropertyChanging();
-			entity.place = this;
-		}
-		
-		private void detach_comments(comment entity)
-		{
-			this.SendPropertyChanging();
-			entity.place = null;
-		}
-	}
-	
 	[Table(Name="dbo.user_locations")]
 	public partial class user_location : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1422,6 +1223,422 @@ namespace HIO.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[Table(Name="dbo.Settings")]
+	public partial class Setting : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _APIcalls;
+		
+		private int _showTwitter;
+		
+		private System.Nullable<int> _set1;
+		
+		private System.Nullable<int> _set2;
+		
+		private System.Nullable<int> _set3;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnAPIcallsChanging(int value);
+    partial void OnAPIcallsChanged();
+    partial void OnshowTwitterChanging(int value);
+    partial void OnshowTwitterChanged();
+    partial void Onset1Changing(System.Nullable<int> value);
+    partial void Onset1Changed();
+    partial void Onset2Changing(System.Nullable<int> value);
+    partial void Onset2Changed();
+    partial void Onset3Changing(System.Nullable<int> value);
+    partial void Onset3Changed();
+    #endregion
+		
+		public Setting()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_APIcalls", DbType="Int NOT NULL")]
+		public int APIcalls
+		{
+			get
+			{
+				return this._APIcalls;
+			}
+			set
+			{
+				if ((this._APIcalls != value))
+				{
+					this.OnAPIcallsChanging(value);
+					this.SendPropertyChanging();
+					this._APIcalls = value;
+					this.SendPropertyChanged("APIcalls");
+					this.OnAPIcallsChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_showTwitter", DbType="Int NOT NULL")]
+		public int showTwitter
+		{
+			get
+			{
+				return this._showTwitter;
+			}
+			set
+			{
+				if ((this._showTwitter != value))
+				{
+					this.OnshowTwitterChanging(value);
+					this.SendPropertyChanging();
+					this._showTwitter = value;
+					this.SendPropertyChanged("showTwitter");
+					this.OnshowTwitterChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_set1", DbType="Int")]
+		public System.Nullable<int> set1
+		{
+			get
+			{
+				return this._set1;
+			}
+			set
+			{
+				if ((this._set1 != value))
+				{
+					this.Onset1Changing(value);
+					this.SendPropertyChanging();
+					this._set1 = value;
+					this.SendPropertyChanged("set1");
+					this.Onset1Changed();
+				}
+			}
+		}
+		
+		[Column(Storage="_set2", DbType="Int")]
+		public System.Nullable<int> set2
+		{
+			get
+			{
+				return this._set2;
+			}
+			set
+			{
+				if ((this._set2 != value))
+				{
+					this.Onset2Changing(value);
+					this.SendPropertyChanging();
+					this._set2 = value;
+					this.SendPropertyChanged("set2");
+					this.Onset2Changed();
+				}
+			}
+		}
+		
+		[Column(Storage="_set3", DbType="Int")]
+		public System.Nullable<int> set3
+		{
+			get
+			{
+				return this._set3;
+			}
+			set
+			{
+				if ((this._set3 != value))
+				{
+					this.Onset3Changing(value);
+					this.SendPropertyChanging();
+					this._set3 = value;
+					this.SendPropertyChanged("set3");
+					this.Onset3Changed();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.places")]
+	public partial class place : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PID;
+		
+		private decimal _LatVal;
+		
+		private decimal _LongVal;
+		
+		private string _Name;
+		
+		private int _Flag;
+		
+		private int _UserID;
+		
+		private string _Town;
+		
+		private EntitySet<comment> _comments;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPIDChanging(int value);
+    partial void OnPIDChanged();
+    partial void OnLatValChanging(decimal value);
+    partial void OnLatValChanged();
+    partial void OnLongValChanging(decimal value);
+    partial void OnLongValChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnFlagChanging(int value);
+    partial void OnFlagChanged();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnTownChanging(string value);
+    partial void OnTownChanged();
+    #endregion
+		
+		public place()
+		{
+			this._comments = new EntitySet<comment>(new Action<comment>(this.attach_comments), new Action<comment>(this.detach_comments));
+			OnCreated();
+		}
+		
+		[Column(Storage="_PID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PID
+		{
+			get
+			{
+				return this._PID;
+			}
+			set
+			{
+				if ((this._PID != value))
+				{
+					this.OnPIDChanging(value);
+					this.SendPropertyChanging();
+					this._PID = value;
+					this.SendPropertyChanged("PID");
+					this.OnPIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LatVal", DbType="Decimal(18,8) NOT NULL")]
+		public decimal LatVal
+		{
+			get
+			{
+				return this._LatVal;
+			}
+			set
+			{
+				if ((this._LatVal != value))
+				{
+					this.OnLatValChanging(value);
+					this.SendPropertyChanging();
+					this._LatVal = value;
+					this.SendPropertyChanged("LatVal");
+					this.OnLatValChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LongVal", DbType="Decimal(18,8) NOT NULL")]
+		public decimal LongVal
+		{
+			get
+			{
+				return this._LongVal;
+			}
+			set
+			{
+				if ((this._LongVal != value))
+				{
+					this.OnLongValChanging(value);
+					this.SendPropertyChanging();
+					this._LongVal = value;
+					this.SendPropertyChanged("LongVal");
+					this.OnLongValChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Name", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Flag", DbType="Int NOT NULL")]
+		public int Flag
+		{
+			get
+			{
+				return this._Flag;
+			}
+			set
+			{
+				if ((this._Flag != value))
+				{
+					this.OnFlagChanging(value);
+					this.SendPropertyChanging();
+					this._Flag = value;
+					this.SendPropertyChanged("Flag");
+					this.OnFlagChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Town", DbType="VarChar(MAX)")]
+		public string Town
+		{
+			get
+			{
+				return this._Town;
+			}
+			set
+			{
+				if ((this._Town != value))
+				{
+					this.OnTownChanging(value);
+					this.SendPropertyChanging();
+					this._Town = value;
+					this.SendPropertyChanged("Town");
+					this.OnTownChanged();
+				}
+			}
+		}
+		
+		[Association(Name="place_comment", Storage="_comments", ThisKey="PID", OtherKey="PlaceID")]
+		public EntitySet<comment> comments
+		{
+			get
+			{
+				return this._comments;
+			}
+			set
+			{
+				this._comments.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.place = this;
+		}
+		
+		private void detach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.place = null;
 		}
 	}
 }

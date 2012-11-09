@@ -44,17 +44,6 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.places" Member="places">
-    <Type Name="place">
-      <Column Name="PID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="LatVal" Type="System.Decimal" DbType="Decimal(18,8) NOT NULL" CanBeNull="false" />
-      <Column Name="LongVal" Type="System.Decimal" DbType="Decimal(18,8) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Flag" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="place_comment" Member="comments" ThisKey="PID" OtherKey="PlaceID" Type="comment" />
-    </Type>
-  </Table>
   <Table Name="dbo.user_locations" Member="user_locations">
     <Type Name="user_location">
       <Column Name="LID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -64,6 +53,28 @@
       <Column Name="LongVal" Type="System.Decimal" DbType="Decimal(18,8)" CanBeNull="true" />
       <Column Name="Inuse" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="User_user_location" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Settings" Member="Settings">
+    <Type Name="Setting">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="APIcalls" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="showTwitter" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="set1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="set2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="set3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.places" Member="places">
+    <Type Name="place">
+      <Column Name="PID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LatVal" Type="System.Decimal" DbType="Decimal(18,8) NOT NULL" CanBeNull="false" />
+      <Column Name="LongVal" Type="System.Decimal" DbType="Decimal(18,8) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Flag" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Town" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="place_comment" Member="comments" ThisKey="PID" OtherKey="PlaceID" Type="comment" />
     </Type>
   </Table>
 </Database>

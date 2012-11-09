@@ -194,6 +194,28 @@ namespace HIO.Controllers
             return new JsonpResult(new { cmts = data, ct = data.Count() });
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ListPlaces(string search_str)
+        {
+            var dataContext = new hioDataContext();
+
+            var data = from pl in dataContext.places
+                       join u in dataContext.Users on pl.UserID equals u.UserID
+                       where (pl.Name.Contains(search_str) || pl.Town.Contains(search_str) || u.Comment.Contains(search_str))
+                       orderby pl.Name ascending
+                       select new
+                       {
+                           latitude = pl.LatVal,
+                           longitude = pl.LongVal,
+                           name = pl.Name,
+                           PID = pl.PID,
+                           town = pl.Town,
+                           username = u.Comment
+                       };
+
+            return new JsonpResult(new { sites = data, ct = data.Count() });
+        }
+
         public ActionResult SaveID(string phoneID)
         {
             var dataContext = new hioDataContext();
@@ -201,6 +223,11 @@ namespace HIO.Controllers
             var userchk = (from u in dataContext.Users
                            where u.PID == phoneID
                                select u).Count();
+
+            int APIcallsAllowed = (from u in dataContext.Settings
+                           where u.id == 1
+                               select u).First().APIcalls;
+
             int userID;
             var siteCount = "0";
             var phonename = "No name";
@@ -233,10 +260,17 @@ namespace HIO.Controllers
             }
 
 
-            var APIcalls = (from ev in dataContext.hio_events
+            int APIcalls_today = (from ev in dataContext.hio_events
                            where ev.Event == "API"
                             where ev.Datetime >= DateTime.Now.AddDays(-1)
                            select ev).Count();
+
+            var APIcalls = "0";
+            if (APIcallsAllowed - APIcalls_today > 0) {
+                APIcalls = "1";
+            } else { 
+                APIcalls = "0";
+            }
             
             //new { gloss_list = GlossaryList, answer = desc }
             return new JsonpResult(new { APIcalls = APIcalls, userID = userID, Name = phonename, site_ct = siteCount });            
@@ -251,7 +285,7 @@ namespace HIO.Controllers
             return new JsonpResult("Done");
         }
 
-         public ActionResult SavePlace(int userID, string latval, string longval, string placename, string comment, string username)
+         public ActionResult SavePlace(int userID, string latval, string longval, string placename, string comment, string town)
          {
              place newplace = new place();
              newplace.UserID = userID;
@@ -259,6 +293,7 @@ namespace HIO.Controllers
              newplace.LongVal = Convert.ToDecimal(longval);
              newplace.Name = placename;
              newplace.Flag = 0;
+             newplace.Town = town;
 
              var newplaceID = dataRepository.AddPlace(newplace);
 
