@@ -74,6 +74,7 @@
       <Column Name="Flag" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Town" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="place_comment" Member="comments" ThisKey="PID" OtherKey="PlaceID" Type="comment" />
     </Type>
   </Table>

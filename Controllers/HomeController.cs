@@ -136,6 +136,7 @@ namespace HIO.Controllers
 
             var data = from pl in dataContext.places
                        where pl.UserID == userid
+                       where pl.Flag >= 0
                        orderby pl.Name descending
                        select new
                        {
@@ -161,6 +162,7 @@ namespace HIO.Controllers
             var data = from pl in dataContext.places
                        where (pl.LatVal >= Convert.ToDecimal(latS) && pl.LatVal <= Convert.ToDecimal(latN))
                        where (pl.LongVal >= Convert.ToDecimal(longW) && pl.LongVal <= Convert.ToDecimal(longE))
+                       where pl.Flag >= 0
                        orderby pl.Name descending
                        select new
                        {
@@ -202,6 +204,7 @@ namespace HIO.Controllers
             var data = from pl in dataContext.places
                        join u in dataContext.Users on pl.UserID equals u.UserID
                        where (pl.Name.Contains(search_str) || pl.Town.Contains(search_str) || u.Comment.Contains(search_str))
+                       where pl.Flag >= 0
                        orderby pl.Name ascending
                        select new
                        {
@@ -271,10 +274,22 @@ namespace HIO.Controllers
             } else { 
                 APIcalls = "0";
             }
-            
-            //new { gloss_list = GlossaryList, answer = desc }
-            return new JsonpResult(new { APIcalls = APIcalls, userID = userID, Name = phonename, site_ct = siteCount });            
 
+
+            var total_sites = (from ev in dataContext.places
+                               where ev.Flag >= 0
+                               select ev).Count();
+
+            var latest_pl = from p in dataContext.places
+                            where p.Flag >= 0
+                            orderby p.PID descending
+                            select p;
+
+            var latest_nm = latest_pl.First().Username;
+            var latest_town = latest_pl.First().Town;
+
+            //new { gloss_list = GlossaryList, answer = desc }
+            return new JsonpResult(new { lat_nm = latest_nm, lat_tn = latest_town, total = total_sites, APIcalls = APIcalls, userID = userID, Name = phonename, site_ct = siteCount });            
         }
 
          public ActionResult GetWeather(int userID, string latval, string longval)
@@ -285,13 +300,14 @@ namespace HIO.Controllers
             return new JsonpResult("Done");
         }
 
-         public ActionResult SavePlace(int userID, string latval, string longval, string placename, string comment, string town)
+         public ActionResult SavePlace(int userID, string latval, string longval, string placename, string comment, string town, string username)
          {
              place newplace = new place();
              newplace.UserID = userID;
              newplace.LatVal = Convert.ToDecimal(latval);
              newplace.LongVal = Convert.ToDecimal(longval);
              newplace.Name = placename;
+             newplace.Username = username;
              newplace.Flag = 0;
              newplace.Town = town;
 
@@ -304,17 +320,26 @@ namespace HIO.Controllers
              newcomm.Datetime = DateTime.Now;
  
              dataRepository.AddComment(newcomm);
-             
+             db.SubmitChanges();
 
              return new JsonpResult("Done");
          }
 
          public ActionResult MovePlace(string latval, string longval, int PID)
-         {
-            
-             dataRepository.MovePlace(latval, longval, PID);
+         {          
+             dataRepository.MovePlace(latval, longval, PID);            
+             return new JsonpResult("Done");
+         }
 
-             
+         public ActionResult DeletePlace(int PID)
+         {
+             dataRepository.DeletePlace(PID);
+             return new JsonpResult("Done");
+         }
+
+         public ActionResult SavePhonename(string phonename, int userid)
+         {
+             dataRepository.updatePhonename(userid,phonename);
              return new JsonpResult("Done");
          }
 

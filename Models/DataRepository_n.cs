@@ -43,29 +43,6 @@ namespace HIO.Models
 
         }
 
-        public void MovePlace(string latval, string longval, int PID)
-        {
-            var place = db.places
-                .Where(p => p.PID == PID)
-                .First();
-
-            place.LatVal = Convert.ToDecimal(latval);
-            place.LongVal = Convert.ToDecimal(longval);
-            db.SubmitChanges();
-
-        }
-
-        public void DeletePlace(int PID)
-        {
-            var place = db.places
-                .Where(p => p.PID == PID)
-                .First();
-
-            place.Flag = -1;
-            db.SubmitChanges();
-
-        }
-
         public void updatePhonename(int userID, string phonename)
         {
 
@@ -83,7 +60,6 @@ namespace HIO.Models
 
             int sitecount = db.places
                 .Where(u => u.UserID == userID)
-                .Where(u => u.Flag >= 0)
                 .Count();
 
             return Convert.ToString(sitecount);
@@ -119,15 +95,6 @@ namespace HIO.Models
             db.SubmitChanges();
         }
 
-        public string getName(int UserID)
-        {
-            var user = db.Users
-                .Where(u => u.UserID == UserID)
-                .First();
-
-            return user.Comment;
-
-        }
 
 
         public int AddUser(User user)
@@ -140,7 +107,7 @@ namespace HIO.Models
         public void AddComment(comment comment)
         {
             db.comments.InsertOnSubmit(comment);
-            db.SubmitChanges();
+            
         }
 
         public int AddPlace(place place)

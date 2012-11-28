@@ -4,40 +4,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
-    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jquery.ui.map.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="../../Content/prom5.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../../Scripts/main.js"></script>
+		<script src="../../Scripts/lawnchair/adaptors/LawnchairAdaptorHelpers.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../Scripts/lawnchair/adaptors/DOMStorageAdaptor.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../Scripts/lawnchair/adaptors/WebkitSQLiteAdaptor.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../Scripts/lawnchair/Lawnchair.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../Scripts/app_local.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+
+   
+     <script type="text/javascript">
+
+
+         $(document).bind("pageinit", function() {
+             $(function() {
+                 FTLcheck();
+             });
+
+             $(document).delegate('.back', 'click', function() {
+                 window.location.href = "/";
+             });
+
+             $(document).click(function(event) {
+
+             });
+
+         });
+ 
+    </script>
 </head>
 
 <body>
-    <div class="page">
-
-        <div id="header">
-            <div id="title">
-                <h1>Easter 2012 Road Trip</h1>
-            </div>
-              
-            <div id="logindisplay">
-               <p>&nbsp; </p>
-            </div> 
-            
-            <div id="menucontainer">
-            
-                <ul id="menu">              
-                    <li><%= Html.ActionLink("Refresh", "Index", "Home")%></li>
-                    
-                </ul>
-            
-            </div>
-        </div>
-
-        <div id="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-
-            <div id="footer">
-            </div>
-        </div>
+<div data-role="page" data-theme="a">
+    <div data-role="header" data-position="fixed">
+        <asp:ContentPlaceHolder ID="PageTitleContent" runat="server" />
     </div>
+    <div data-role="content" data-theme="a">
+         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+  </div>
 </body>
+
 </html>
