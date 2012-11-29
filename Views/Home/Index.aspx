@@ -37,6 +37,8 @@
 <p>Name: <span id="phone_name"></span></p>
 </li>
 </ul>
+<a class="twitter-timeline" href="https://twitter.com/uksledge" data-widget-id="273815461060284417">Tweets by @uksledge</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 <ul data-role="listview" data-inset="true">
 <li><p class="ui-li-aside"></p>
