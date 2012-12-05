@@ -24,31 +24,7 @@
 	</div>
 	</div>
 	</div>
-<div data-role="collapsible" data-theme="a" data-inset="true" data-content-theme="a">
-		<h4>Hourly Weather<div style="display:inline" id="snowfall"></div></h4>
-	<canvas id="canvhere" width="450" height="2000">text here eq no canvas</canvas>
-	 </div>
 
-<ul data-role="listview" data-inset="true">
-<li><p class="ui-li-aside"><a href="#my_details" data-rel="dialog" data-transition="flip" data-inline="true" data-icon="gear" data-theme="b" data-role="button" data-mini="true">Edit</a></p>
-<h3>My Details</h3>
-<p>My Location: <span id="loc_here">ssd</span></p>
-<p>Phone ID: <span id="uuid"></span></p>
-<p>Name: <span id="phone_name"></span></p>
-</li>
-</ul>
-<a class="twitter-timeline" href="https://twitter.com/uksledge" data-widget-id="273815461060284417">Tweets by @uksledge</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		
 
-<ul data-role="listview" data-inset="true">
-<li><p class="ui-li-aside"></p>
-<h2 style="color:#F2EDA2">Status</h2>
-<h3 style="color:#B6CEF2">Total sites: nn (nn added in the last 24 hours)</h3>
-<h4 style="color:#486B73">Total users: nn</h4>
-</li>
-</ul>
-
-<h6 id="data_status">Data Connection: </h6>
-		<p onclick="nuke()">Nuke</p>
-    
 </asp:Content>

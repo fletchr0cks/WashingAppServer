@@ -343,8 +343,9 @@ namespace HIO.Controllers
              return new JsonpResult("Done");
          }
 
-         public ActionResult SaveComment(int PID, int userID, string comment)
+         public ActionResult SaveComment(int PID, int userID, string comment, string flag)
          {
+             var username = dataRepository.getName(userID);
              comment newcomm = new comment();
              newcomm.Comment1 = comment;
              newcomm.PlaceID = PID;
@@ -352,6 +353,17 @@ namespace HIO.Controllers
              newcomm.Datetime = DateTime.Now;
 
              dataRepository.AddComment(newcomm);
+
+             if (flag == "yes")
+             {
+                 comment newcomm2 = new comment();
+                 newcomm2.Comment1 = username + " flagged this site for the Moderator.";
+                 newcomm2.PlaceID = PID;
+                 newcomm2.UserID = userID;
+                 newcomm2.Datetime = DateTime.Now;
+                 dataRepository.AddComment(newcomm2);
+             }
+
              var dataContext = new hioDataContext();
              var data = from pl in dataContext.comments
                         where pl.PlaceID == PID
