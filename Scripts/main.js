@@ -109,7 +109,7 @@ var suc = function(p) {
         }
     };
     var locFail = function() {
-        alert("GPS fail");
+        //alert("GPS fail");
         $("#data_status").append("<br /> GPS fail");
         GPS_done(0);
     };
@@ -128,7 +128,7 @@ var refreshGPSLocation = function() {
         }
     };
     var locFail = function() {
-        alert("GPS fail");
+        //alert("GPS fail");
         $("#data_status").append("<br /> GPS fail");
         GPS_refresh(0);
     };
@@ -1035,14 +1035,11 @@ function load_data_refresh() {
         text: 'foo',
         textVisible: true,
         theme: 'a',
-        html: "<p>Please be patient ...</p><p></p><p>Refreshing data</p>"
+        html: "<p>Please be patient..</p><p></p><p>Refreshing data</p>"
     });
 
     var site_ct = getSiteCtstore();
-    var phonename = getPhoneNamestore();
-    if (phonename.length == 0) {
-        $('#name_msg').html("Please add a name in My Details before adding sites.");
-    } 
+    
     var town = getTownstore();
     var total = getTotalstore();
     var lat_tn = getLat_tn();
@@ -1075,7 +1072,7 @@ function load_data_db() {
         text: 'foo',
         textVisible: true,
         theme: 'a',
-        html: "<p>Please be patient ...</p><p></p><p>Loading data e</p>"
+        html: "<p>Please be patient ...</p><p></p><p>Loading data</p>"
     });
     try {
         var phoneid = device.uuid;
@@ -1236,10 +1233,10 @@ function setMarkers(map, bounds_map, PID) {
 
             var bannermsg = "";
             if (ct == 0) {
-                $("#map_msg").html("No sledging sites listed in this view.");
+                $("#map_msg").html("No sites listed in this view.");
 
             } else {
-                $("#map_msg").html(ct + " Loaded. Click to see comments ...");
+                $("#map_msg").html(ct + " Loaded. Click to see comments.");
 
             }
 

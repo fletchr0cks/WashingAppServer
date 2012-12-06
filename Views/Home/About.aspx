@@ -5,8 +5,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="PageTitleContent" runat="server">
-<p>&nbsp;</p>
-<div style="text-align:center;padding-top:10px"><img  src="../../Content/headerlogo.png" /></div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">

@@ -32,7 +32,7 @@
 <li><p class="ui-li-aside"><a href="/Home/About" data-rel="page" data-transition="flip" data-inline="true" data-icon="gear" data-theme="b" data-role="button" data-mini="true">Edit</a></p>
 <h3>My Details</h3>
 <p>&nbsp;</p>
-<p>My Location: <span id="loc_here">ssd</span></p>
+<p>My Location: <span id="loc_here"></span></p>
 </li>
 </ul>
 
@@ -44,10 +44,10 @@
 <p>Latest site added by <span id="lat_nm"></span> in <span id="lat_tn"></span></p></div>
 </li>
 </ul>
-
+<div id="twitter_div">
 <a class="twitter-timeline" href="https://twitter.com/uksledge" data-widget-id="273815461060284417">Tweets by @uksledge</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
+</div>
 <h6 id="data_status">Data Connection: </h6>
 		<p onclick="nuke()">Nuke</p>
 		
