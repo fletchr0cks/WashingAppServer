@@ -48,10 +48,6 @@
 <a class="twitter-timeline" href="https://twitter.com/uksledge" data-widget-id="273815461060284417">Tweets by @uksledge</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
-<h6 id="data_status">Data Connection: </h6>
-		<p onclick="nuke()">Nuke</p>
+<h6 id="data_statusqq"></h6>
 		
-		
-	
-
 </asp:Content>
