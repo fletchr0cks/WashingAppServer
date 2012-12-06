@@ -1360,7 +1360,7 @@ function doSearch() {
         dataType: "jsonp",
         success: function(json) {
             $.each(json.sites, function(i, result) {
-            sites_html = sites_html + "<li><a href=\"index.html#two\" onClick=\"search_result_map(" +result.latitude + "," + result.longitude + "," + result.PID + ")\">" + result.town + ", " + result.name + ". Added by " + result.username + "</a></li>";
+            sites_html = sites_html + "<li><a href=\"/Home/Index/\" onClick=\"search_result_map(" +result.latitude + "," + result.longitude + "," + result.PID + ")\">" + result.town + ", " + result.name + ". Added by " + result.username + "</a></li>";
                 ct = json.ct;
             });
         },
@@ -1399,7 +1399,7 @@ $.ajax({
     dataType: "jsonp",
     success: function(json) {
         $.each(json.cmts, function(i, result) {
-            var para = "<li class=\"ui-li ui-li-static ui-body-c\"><p class=\"ui-li-heading\" style=\"color:#66A68B\">" + result.datetime + "</p><p style=\"white-space: normal\" class=\"ui-li-desc\">" + result.comment + "</p></li>";
+            var para = "<li class=\"ui-li ui-li-static ui-body-c\"><p class=\"ui-li-heading\" style=\"color:#66A68B\">" + result.datetime + "</p><p style=\"white-space: normal\" class=\"ui-li-desc\">On " + result.comment + ", " + result.username + " wrote:</p></li>";
             comments_html = comments_html + "<div class=\"ui-bar ui-bar-c\"><h4>" + result.datetime + "</h4></div>" +
               "<div class=\"ui-bar ui-bar-c\"><h4>" + result.username + "</h4></div>" +
  "<div class=\"ui-bar ui-bar-c\"><h4>" + result.comment + "</h4></div>" +

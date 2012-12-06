@@ -36,6 +36,12 @@ namespace HIO.Controllers
             return View();
         }
 
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+       
         public ActionResult Save(string lat, string lval, string city, string country, string comment)
         {
            

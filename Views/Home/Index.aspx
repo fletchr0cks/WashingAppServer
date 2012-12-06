@@ -22,7 +22,7 @@
        <div id="place_name" class="ui-bar ui-bar-b">&nbsp</div> 
        <div id="place_name2" class="ui-bar ui-bar-b" style="display:none"><div style="display:inline" id="comments_ct"></div></div> 
        <div id="place_comments" data-theme="b" ></div>
-       
+  
 <div data-role="collapsible" data-theme="a" data-inset="true" data-content-theme="a">
 		<h4>Hourly Weather<div style="display:inline" id="snowfall"></div></h4>
 	<canvas id="canvhere" width="450" height="2000">text here eq no canvas</canvas>
