@@ -77,9 +77,35 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\headerlogo.png" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\icons-18-black.png" />
+    <Content Include="Content\images\icons-18-white.png" />
+    <Content Include="Content\images\icons-36-black.png" />
+    <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Content\logos2.png" />
+    <Content Include="Content\marker_n.png" />
+    <Content Include="Content\marker_s1.png" />
+    <Content Include="Content\marker_s2.png" />
+    <Content Include="Content\marker_s3.png" />
+    <Content Include="Content\marker_s4.png" />
+    <Content Include="Content\marker_search.png" />
+    <Content Include="Content\prom5.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\AIRSqliteAdaptor.js" />
+    <Content Include="Scripts\AIRSqliteAsyncAdaptor.js" />
+    <Content Include="Scripts\app_local.js" />
+    <Content Include="Scripts\BlackBerryPersistentStorageAdaptor.js" />
+    <Content Include="Scripts\CookieAdaptor.js" />
+    <Content Include="Scripts\DOMStorageAdaptor.js" />
+    <Content Include="Scripts\GearsSQLiteAdaptor.js" />
     <Content Include="Scripts\jquery.ui.map.js" />
+    <Content Include="Scripts\Lawnchair.js" />
+    <Content Include="Scripts\LawnchairAdaptorHelpers.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\UserDataStorage.js" />
+    <Content Include="Scripts\WebkitSQLiteAdaptor.js" />
     <Content Include="Views\Home\Save.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />

@@ -933,20 +933,21 @@ $.ajax({
 var start = function() {
 
     popTwitter();
+    showmap();
     $.mobile.loading('hide');
     $("#showmaplink").removeClass("ui-disabled");
     $("#showmaplink").addClass("ui-enabled");
 
     $("#my_details_link").removeClass("ui-disabled");
     $("#my_details_link").addClass("ui-enabled");
-    var phonename = document.getElementById("username1").value;
-    if (phonename.length > 0) {
-        $("#add_site_link").removeClass("ui-disabled");
-        $("#add_site_link").addClass("ui-enabled");
-
-        $("#my_sites_link").removeClass("ui-disabled");
-        $("#my_sites_link").addClass("ui-enabled");
-    }
+    // var phonename = document.getElementById("username1").value;
+    //   if (phonename.length > 0) {
+    //       $("#add_site_link").removeClass("ui-disabled");
+    //       $("#add_site_link").addClass("ui-enabled");
+    //
+    //       $("#my_sites_link").removeClass("ui-disabled");
+    //       $("#my_sites_link").addClass("ui-enabled");
+    //   }
     $("#search_link").removeClass("ui-disabled");
     $("#search_link").addClass("ui-enabled");
 
@@ -1046,8 +1047,8 @@ function load_data_refresh() {
     var total = getTotalstore();
     var lat_tn = getLat_tn();
     var lat_nm = getLat_nm();
-    $('#phone_name').html(phonename);
-    document.getElementById("username1").value = phonename;
+    //$('#phone_name').html(phonename);
+    //document.getElementById("username1").value = phonename;
     $('#my_sites_ct').html(site_ct);
     $('#data_status').append("API: unknown");
     $('#loc_here').html(town);
@@ -1116,10 +1117,10 @@ function load_data_db() {
         complete: function(xhr, status) {
             SaveLoginDetails(APIcalls, phonename, userID, site_ct, total, lat_nm, lat_tn);
             $('#phone_name').html(phonename);
-            document.getElementById("username1").value = phonename;
-            if (phonename.length == 0) {
-                $('#name_msg').html("Please add a name in My Details before adding sites.");
-            } 
+            //document.getElementById("username1").value = phonename;
+            //if (phonename.length == 0) {
+           //     $('#name_msg').html("Please add a name in My Details before adding sites.");
+           // } 
             $('#my_sites_ct').html(site_ct);
             $('#data_status').append("API: " + userID);
             var town = getTownstore();
@@ -1150,7 +1151,7 @@ function setMarkers(map, bounds_map, PID) {
     if (parseInt(PID) > 0) {
 //        var infoWindowLive = new google.maps.InfoWindow({ content: 'This one: ' + PID });
     }
-    var timage = 'marker_search.png';
+    var timage = '../../Content/marker_search.png';
     var position = getPosition();
     var latlng = position.split(',');
     var tlat = latlng[0];
@@ -1164,21 +1165,21 @@ function setMarkers(map, bounds_map, PID) {
         data: "bounds=" + bds_fmt,
         dataType: "jsonp",
         success: function(json) {
-            var json_loc = { "points": [{ "lat": tlat, "longval": tlng, "name": "You are here!", "PID": "1"}] };
+            //var json_loc = { "points": [{ "lat": tlat, "longval": tlng, "name": "You are here!", "PID": "1"}] };
             ct = json.ct; //56.208,-3.15
-            $.merge(json.points, json_loc.points);
+            //$.merge(json.points, json_loc.points);
             var jsontext = JSON.stringify(json);
            
             $.each(json.points, function(i, markers) {
                 console.log(json);
                 if (markers.PID == parseInt(PID)) {
-                    var image = 'marker_search.png';
+                    var image = '../../Content/marker_search.png';
                     ListComments(markers.PID);
                     $('#place_name').html(markers.name);
                 } else if (markers.PID == 1) {
-                    var image = 'marker_search.png';
+                var image = '../../Content/marker_search.png';
                 } else {
-                    var image = 'marker_s4.png';
+                var image = '../../Content/marker_s4.png';
                 }
                 //var infoWindow = new google.maps.InfoWindow({ content: 'Place ID' + markers.PID });
                 var siteLatLng = new google.maps.LatLng(markers.lat, markers.longval);
@@ -1235,7 +1236,7 @@ function setMarkers(map, bounds_map, PID) {
 
             var bannermsg = "";
             if (ct == 0) {
-                $("#map_msg").html(ct + " No sledging sites listed in this view.");
+                $("#map_msg").html("No sledging sites listed in this view.");
 
             } else {
                 $("#map_msg").html(ct + " Loaded. Click to see comments ...");
@@ -1248,7 +1249,7 @@ function setMarkers(map, bounds_map, PID) {
 }
 
 function setMarker_site(map, bounds_map, lat, lng) {
-    var image = 'marker_n.png';
+    var image = '../../Content/marker_n.png';
     $('#lat_coord').html(lat.toString().slice(0, 9));
     $('#long_coord').html(lng.toString().slice(0, 9));
     var bounds = new google.maps.LatLngBounds(bounds_map);
@@ -1266,7 +1267,7 @@ function setMarker_site(map, bounds_map, lat, lng) {
 function setMarker_move(map, bounds_map, lat, lng) {
     var latstr = lat.toString().slice(0,9);
     var lngstr = lng.toString().slice(0,9);
-    var image = 'marker_n.png'
+    var image = '../../Content/marker_n.png'
     $('#lat_coordm').html(latstr);
     $('#long_coordm').html(lngstr);
     var bounds = new google.maps.LatLngBounds(bounds_map);
